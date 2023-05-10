@@ -1,5 +1,8 @@
 import JWT from "passport-jwt";
 import User from "../models/user.js";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const JWTStrategy = JWT.Strategy;
 
@@ -7,7 +10,7 @@ const ExtractJWT = JWT.ExtractJwt;
 
 const opts = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'twitter_secret'
+    secretOrKey: process.env.SECRET_KEY
 };
 
 export const passportAuth = (passport) => {
